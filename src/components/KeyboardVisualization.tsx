@@ -47,13 +47,35 @@ export const KeyboardVisualization: React.FC<KeyboardVisualizationProps> = ({
       classes.push('keyboard-key-home');
     }
 
-    // Finger color
+    return classes.join(' ');
+  };
+
+  const getKeyStyle = (key: Key): React.CSSProperties => {
+    const isActive = currentKey &&
+      (key.primary === currentKey.primary || key.primary === currentChar);
+
+    // Finger color background
     if (showFingerColors && !isActive) {
       const fingerColor = getFingerColor(key.finger);
-      classes.push(fingerColor.replace('bg-', 'border-b-4 border-'));
+      const colorMap: Record<string, string> = {
+        'bg-pink-500': 'rgba(236, 72, 153, 0.25)',
+        'bg-blue-500': 'rgba(59, 130, 246, 0.25)',
+        'bg-green-500': 'rgba(34, 197, 94, 0.25)',
+        'bg-yellow-500': 'rgba(234, 179, 8, 0.25)',
+        'bg-purple-500': 'rgba(168, 85, 247, 0.25)',
+      };
+      return {
+        backgroundColor: colorMap[fingerColor] || undefined,
+        borderBottom: `4px solid ${fingerColor.replace('bg-', '').replace('-500', '')}`,
+        borderBottomColor: fingerColor === 'bg-pink-500' ? '#ec4899' :
+                           fingerColor === 'bg-blue-500' ? '#3b82f6' :
+                           fingerColor === 'bg-green-500' ? '#22c55e' :
+                           fingerColor === 'bg-yellow-500' ? '#eab308' :
+                           fingerColor === 'bg-purple-500' ? '#a855f7' : undefined,
+      };
     }
 
-    return classes.join(' ');
+    return {};
   };
 
   const getKeyWidth = (key: Key): string => {
@@ -85,6 +107,7 @@ export const KeyboardVisualization: React.FC<KeyboardVisualizationProps> = ({
                   style={{
                     width: getKeyWidth(key),
                     minWidth: key.width ? 'auto' : undefined,
+                    ...getKeyStyle(key),
                   }}
                 >
                   {/* Primary character */}
