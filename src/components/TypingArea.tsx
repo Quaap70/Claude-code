@@ -1,5 +1,5 @@
 import React from 'react';
-import { CharacterStatus } from '../types';
+import type { CharacterStatus } from '../types';
 
 interface TypingAreaProps {
   characters: CharacterStatus[];
@@ -18,7 +18,7 @@ export const TypingArea: React.FC<TypingAreaProps> = ({
   fontSize = 24,
   blindMode = false,
 }) => {
-  const getCharClass = (char: CharacterStatus, index: number): string => {
+  const getCharClass = (char: CharacterStatus): string => {
     const baseClass = 'typing-char font-mono px-0.5 rounded';
 
     if (blindMode && char.status === 'pending') {
@@ -62,7 +62,7 @@ export const TypingArea: React.FC<TypingAreaProps> = ({
           {characters.map((char, index) => (
             <span
               key={index}
-              className={getCharClass(char, index)}
+              className={getCharClass(char)}
               style={{
                 position: 'relative',
               }}

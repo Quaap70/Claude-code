@@ -1,4 +1,4 @@
-import { TypingStats, CharacterStatus } from '../types';
+import type { TypingStats, CharacterStatus } from '../types';
 
 /**
  * Bereken WPM (Words Per Minute)

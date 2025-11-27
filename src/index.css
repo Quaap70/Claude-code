@@ -1,87 +1,109 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-@layer base {
-  :root {
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  body {
-    @apply m-0 min-h-screen bg-gray-900 text-gray-100;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  }
-
-  * {
-    box-sizing: border-box;
-  }
+:root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@layer components {
-  /* Custom component styles */
-  .btn {
-    @apply px-4 py-2 rounded-lg font-medium transition-all duration-200 cursor-pointer;
-  }
-
-  .btn-primary {
-    @apply bg-primary-600 hover:bg-primary-700 text-white;
-  }
-
-  .btn-secondary {
-    @apply bg-gray-700 hover:bg-gray-600 text-gray-100;
-  }
-
-  .card {
-    @apply bg-gray-800 rounded-xl p-6 shadow-lg;
-  }
-
-  /* Typing area specific styles */
-  .typing-char {
-    @apply inline-block transition-colors duration-75;
-  }
-
-  .typing-char-correct {
-    @apply text-green-400;
-  }
-
-  .typing-char-incorrect {
-    @apply text-red-400 bg-red-900/30;
-  }
-
-  .typing-char-current {
-    @apply bg-gray-700 animate-pulse;
-  }
-
-  .keyboard-key {
-    @apply bg-gray-700 hover:bg-gray-600 text-gray-100 rounded-lg p-3 text-center
-           shadow-md transition-all duration-100 font-mono;
-  }
-
-  .keyboard-key-active {
-    @apply bg-primary-600 text-white transform scale-95;
-  }
-
-  .keyboard-key-home {
-    @apply border-2 border-primary-500/50;
-  }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #111827;
+  color: #f3f4f6;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }
 
-@layer utilities {
-  .text-shadow {
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  }
+* {
+  box-sizing: border-box;
+}
 
-  .glow {
-    box-shadow: 0 0 20px rgba(14, 165, 233, 0.5);
-  }
+/* Typing area specific styles */
+.typing-char {
+  display: inline-block;
+  transition: color 75ms;
+}
 
-  .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-primary-600;
-  }
+.typing-char-correct {
+  color: #4ade80;
+}
+
+.typing-char-incorrect {
+  color: #f87171;
+  background-color: rgba(127, 29, 29, 0.3);
+}
+
+.typing-char-current {
+  background-color: #374151;
+  animation: pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.keyboard-key {
+  background-color: #374151;
+  color: #f3f4f6;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  text-align: center;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  transition: all 100ms;
+  font-family: 'Courier New', monospace;
+}
+
+.keyboard-key:hover {
+  background-color: #4b5563;
+}
+
+.keyboard-key-active {
+  background-color: #0284c7;
+  color: white;
+  transform: scale(0.95);
+}
+
+.keyboard-key-home {
+  border: 2px solid rgba(14, 165, 233, 0.5);
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 200ms;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary {
+  background-color: #0284c7;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #0369a1;
+}
+
+.btn-secondary {
+  background-color: #374151;
+  color: #f3f4f6;
+}
+
+.btn-secondary:hover {
+  background-color: #4b5563;
+}
+
+.card {
+  background-color: #1f2937;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+}
+
+.gradient-text {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, #38bdf8, #0284c7);
 }
 
 /* Animations */
@@ -107,13 +129,14 @@
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-gray-800;
+  background-color: #1f2937;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gray-600 rounded-full;
+  background-color: #4b5563;
+  border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-gray-500;
+  background-color: #6b7280;
 }

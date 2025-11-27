@@ -1,5 +1,5 @@
 import React from 'react';
-import { TypingStats } from '../types';
+import type { TypingStats } from '../types';
 import { getWPMColor, getAccuracyColor, formatTime } from '../utils/typingCalculations';
 
 interface StatsDisplayProps {

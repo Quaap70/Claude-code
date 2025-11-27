@@ -1,4 +1,4 @@
-import { KeyboardLayout, Key, Finger } from '../types';
+import type { KeyboardLayout, Key, Finger } from '../types';
 
 /**
  * Nederlandse QWERTY keyboard layout

@@ -4,7 +4,7 @@ import { useKeyboardInput } from '../hooks/useKeyboardInput';
 import { TypingArea } from './TypingArea';
 import { StatsDisplay } from './StatsDisplay';
 import { KeyboardVisualization } from './KeyboardVisualization';
-import { SessionMode, TypingStats } from '../types';
+import type { SessionMode, TypingStats } from '../types';
 
 interface TypingSessionProps {
   words: string[];

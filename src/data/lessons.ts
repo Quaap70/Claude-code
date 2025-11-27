@@ -1,4 +1,4 @@
-import { Lesson, LessonPhase } from '../types';
+import type { Lesson, LessonPhase } from '../types';
 import { getWordsByCombination, getWordsByPhase } from './dutchWords';
 
 /**

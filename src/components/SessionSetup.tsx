@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { SessionMode, SessionDuration, SessionWordCount, LessonPhase } from '../types';
+import type { SessionMode, SessionDuration, SessionWordCount, LessonPhase } from '../types';
 
 interface SessionSetupProps {
   onStart: (config: SessionConfig) => void;

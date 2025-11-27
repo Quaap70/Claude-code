@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { CharacterStatus, TypingStats, WordStatus } from '../types';
+import type { CharacterStatus, TypingStats, WordStatus } from '../types';
 import { calculateTypingStats, detectErrorPatterns } from '../utils/typingCalculations';
 
 export interface TypingEngineConfig {
@@ -34,14 +34,14 @@ export function useTypingEngine(config: TypingEngineConfig) {
   const [isStarted, setIsStarted] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
-  const [startTime, setStartTime] = useState<number | null>(null);
+  const [_startTime, setStartTime] = useState<number | null>(null);
   const [elapsedTime, setElapsedTime] = useState(0);
   const [wpmHistory, setWpmHistory] = useState<number[]>([]);
   const [errorIndices, setErrorIndices] = useState<number[]>([]);
 
   // Refs
-  const timerRef = useRef<number>();
-  const wpmIntervalRef = useRef<number>();
+  const timerRef = useRef<number | undefined>(undefined);
+  const wpmIntervalRef = useRef<number | undefined>(undefined);
 
   // Initialize characters from text
   useEffect(() => {
@@ -231,7 +231,6 @@ export function useTypingEngine(config: TypingEngineConfig) {
   const getWordStatuses = useCallback((): WordStatus[] => {
     const words: WordStatus[] = [];
     let currentWord: CharacterStatus[] = [];
-    let wordStartIndex = 0;
 
     characters.forEach((char, index) => {
       if (char.char === ' ' || index === characters.length - 1) {
@@ -253,7 +252,6 @@ export function useTypingEngine(config: TypingEngineConfig) {
           });
 
           currentWord = [];
-          wordStartIndex = index + 1;
         }
 
         // Add space as separate word

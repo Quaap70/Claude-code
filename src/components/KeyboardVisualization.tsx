@@ -1,6 +1,6 @@
 import React from 'react';
 import { qwertyLayout, getKeyForChar, getFingerColor } from '../data/keyboardLayout';
-import { Key } from '../types';
+import type { Key } from '../types';
 
 interface KeyboardVisualizationProps {
   currentChar?: string;

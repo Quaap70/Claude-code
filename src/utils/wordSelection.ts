@@ -1,4 +1,4 @@
-import { Word, LessonPhase, UserWeaknesses, ErrorPattern } from '../types';
+import type { Word, LessonPhase, UserWeaknesses, ErrorPattern } from '../types';
 import { getWordsByPhase, getWordsByCombination } from '../data/dutchWords';
 
 /**

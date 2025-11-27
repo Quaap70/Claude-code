@@ -1,4 +1,4 @@
-import { Word, WordBank } from '../types';
+import type { Word, WordBank } from '../types';
 
 /**
  * Nederlandse woordenbank georganiseerd volgens de Monkeytype methode
